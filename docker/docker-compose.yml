@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: db
+    environment:
+      POSTGRES_DB: pegasus-messenger
+      POSTGRES_USER: pegasus
+      POSTGRES_PASSWORD: pegasus
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
