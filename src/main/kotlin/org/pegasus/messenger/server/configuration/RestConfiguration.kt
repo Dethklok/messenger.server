@@ -15,7 +15,7 @@ class RestConfiguration : RepositoryRestConfigurer {
         config?.setBasePath("api")
         cors?.addMapping("/*")
             ?.allowedOrigins("127.0.0.1:4200")
-            ?.allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE")
+            ?.allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
     }
 
     override fun configureValidatingRepositoryEventListener(validatingListener: ValidatingRepositoryEventListener?) {

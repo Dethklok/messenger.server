@@ -16,3 +16,11 @@ spring:
 
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-master.xml
+
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          introspection-uri: http://localhost:8081/auth/realms/pegasus/protocol/openid-connect/token/introspect
+          client-id: pegasus-messenger-server
+          client-secret: oTRYUVig2SdBqhuvEbci6T8aBNmKx7Oh
