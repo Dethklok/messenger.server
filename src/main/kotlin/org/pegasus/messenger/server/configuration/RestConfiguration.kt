@@ -14,7 +14,7 @@ class RestConfiguration : RepositoryRestConfigurer {
     override fun configureRepositoryRestConfiguration(config: RepositoryRestConfiguration?, cors: CorsRegistry?) {
         config?.setBasePath("api")
         cors?.addMapping("/*")
-            ?.allowedOrigins("127.0.0.1:4200")
+            ?.allowedOrigins("http://localhost:4200")
             ?.allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
     }
 
