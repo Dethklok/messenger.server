@@ -24,3 +24,12 @@ spring:
           introspection-uri: http://localhost:8081/auth/realms/pegasus/protocol/openid-connect/token/introspect
           client-id: pegasus-messenger-server
           client-secret: oTRYUVig2SdBqhuvEbci6T8aBNmKx7Oh
+
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+
+web:
+  allowed-origin: http://localhost:4200
