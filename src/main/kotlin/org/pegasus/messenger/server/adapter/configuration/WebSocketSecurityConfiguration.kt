@@ -1,4 +1,4 @@
-package org.pegasus.messenger.server.configuration
+package org.pegasus.messenger.server.adapter.configuration
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.socket.AbstractSecurityWebSocketMessageBrokerConfigurer

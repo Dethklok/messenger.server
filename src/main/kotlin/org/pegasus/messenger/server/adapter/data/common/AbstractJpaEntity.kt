@@ -1,4 +1,4 @@
-package org.pegasus.messenger.server.model
+package org.pegasus.messenger.server.adapter.data.common
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.springframework.data.annotation.CreatedDate
@@ -26,7 +26,7 @@ import javax.persistence.Version
  */
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
-abstract class AbstractEntity<ID : Serializable> : Persistable<ID>, Serializable {
+abstract class AbstractJpaEntity<ID : Serializable> : Persistable<ID>, Serializable {
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,11 +35,11 @@ abstract class AbstractEntity<ID : Serializable> : Persistable<ID>, Serializable
 
         @CreatedDate
         @Column(updatable = false, nullable = false)
-        private lateinit var createdAt: LocalDateTime
+        lateinit var createdAt: LocalDateTime
 
         @LastModifiedDate
         @Column(nullable = false)
-        private lateinit var updatedAt: LocalDateTime
+        lateinit var updatedAt: LocalDateTime
 
         @Version
         @JsonIgnore

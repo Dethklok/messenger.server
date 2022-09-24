@@ -1,4 +1,4 @@
-package org.pegasus.messenger.server.configuration
+package org.pegasus.messenger.server.adapter.configuration
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean

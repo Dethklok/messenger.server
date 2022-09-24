@@ -1,12 +1,13 @@
-package org.pegasus.messenger.server.model
+package org.pegasus.messenger.server.adapter.data.message
 
+import org.pegasus.messenger.server.adapter.data.common.AbstractJpaEntity
 import javax.persistence.Entity
 import javax.persistence.Table
 import javax.validation.constraints.NotEmpty
 
 @Entity
 @Table(name = "message")
-class Message(
+class JpaMessage(
     @field:NotEmpty
     val content: String
-) : AbstractEntity<Long>()
+) : AbstractJpaEntity<Long>()
