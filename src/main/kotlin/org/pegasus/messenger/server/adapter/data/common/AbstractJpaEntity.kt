@@ -1,19 +1,13 @@
 package org.pegasus.messenger.server.adapter.data.common
 
 import com.fasterxml.jackson.annotation.JsonIgnore
+import jakarta.persistence.*
 import org.springframework.data.annotation.CreatedDate
 import org.springframework.data.annotation.LastModifiedDate
 import org.springframework.data.domain.Persistable
 import org.springframework.data.jpa.domain.support.AuditingEntityListener
 import java.io.Serializable
 import java.time.LocalDateTime
-import javax.persistence.Column
-import javax.persistence.EntityListeners
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
-import javax.persistence.MappedSuperclass
-import javax.persistence.Version
 
 /**
  * Class for default auditable model. Extends [Persistable]
@@ -28,25 +22,25 @@ import javax.persistence.Version
 @EntityListeners(AuditingEntityListener::class)
 abstract class AbstractJpaEntity<ID : Serializable> : Persistable<ID>, Serializable {
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        @Column(updatable = false, nullable = false)
-        private val id: ID? = null
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(updatable = false, nullable = false)
+  private var id: ID? = null
 
-        @CreatedDate
-        @Column(updatable = false, nullable = false)
-        lateinit var createdAt: LocalDateTime
+  @CreatedDate
+  @Column(updatable = false, nullable = false)
+  lateinit var createdAt: LocalDateTime
 
-        @LastModifiedDate
-        @Column(nullable = false)
-        lateinit var updatedAt: LocalDateTime
+  @LastModifiedDate
+  @Column(nullable = false)
+  lateinit var updatedAt: LocalDateTime
 
-        @Version
-        @JsonIgnore
-        private var version: Long? = null
+  @Version
+  @JsonIgnore
+  private var version: Long? = null
 
-        override fun getId(): ID? = this.id
+  override fun getId(): ID? = this.id
 
-        @JsonIgnore
-        override fun isNew(): Boolean = this.id == null
+  @JsonIgnore
+  override fun isNew(): Boolean = this.id == null
 }

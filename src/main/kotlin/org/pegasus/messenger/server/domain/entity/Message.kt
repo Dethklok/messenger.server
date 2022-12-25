@@ -7,8 +7,4 @@ class Message(
   val content: String,
   val createdAt: LocalDateTime,
   val updatedAt: LocalDateTime
-) {
-  companion object {
-    fun create(id: Long, content: String, createdAt: LocalDateTime, updatedAt: LocalDateTime) = Message(id, content, createdAt, updatedAt)
-  }
-}
+)

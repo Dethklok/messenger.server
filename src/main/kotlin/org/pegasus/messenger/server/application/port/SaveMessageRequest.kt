@@ -1,3 +1,6 @@
 package org.pegasus.messenger.server.application.port
 
-data class SaveMessageRequest(val content: String)
+interface SaveMessageRequest {
+  val content: String
+  val userId: String
+}
