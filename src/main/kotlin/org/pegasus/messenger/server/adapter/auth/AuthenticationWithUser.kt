@@ -7,8 +7,8 @@ import org.springframework.security.oauth2.core.OAuth2AuthenticatedPrincipal
 import org.springframework.security.oauth2.server.resource.authentication.BearerTokenAuthentication
 
 class AuthenticationWithUser(
-    principal: OAuth2AuthenticatedPrincipal,
-    credentials: OAuth2AccessToken,
-    authorities: MutableCollection<out GrantedAuthority>,
-    user: User
+  principal: OAuth2AuthenticatedPrincipal,
+  credentials: OAuth2AccessToken,
+  authorities: MutableCollection<out GrantedAuthority>,
+  val user: User
 ) : BearerTokenAuthentication(principal, credentials, authorities)

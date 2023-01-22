@@ -15,47 +15,47 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 @Configuration
 @EnableWebSecurity
 class WebSecurityConfiguration(
-    private val opaqueTokenIntrospector: OpaqueTokenIntrospector,
-    private val authenticationConverter: AuthenticationConverter
+  private val opaqueTokenIntrospector: OpaqueTokenIntrospector,
+  private val authenticationConverter: AuthenticationConverter
 ) {
 
-    @Bean
-    fun filterChain(
-        http: HttpSecurity,
-    ): SecurityFilterChain {
-        http
-            .authorizeHttpRequests {
-                it
-                    .requestMatchers("/wss-main").permitAll()
-                    .anyRequest().authenticated()
-            }
-            .csrf().disable()
-            .cors()
-            .and()
-            .oauth2ResourceServer()
-            .opaqueToken()
-            .authenticationConverter(authenticationConverter)
+  @Bean
+  fun filterChain(
+    http: HttpSecurity,
+  ): SecurityFilterChain {
+    http
+      .authorizeHttpRequests {
+        it
+          .requestMatchers("/wss-main").permitAll()
+          .anyRequest().authenticated()
+      }
+      .csrf().disable()
+      .cors()
+      .and()
+      .oauth2ResourceServer()
+      .opaqueToken()
+      .authenticationConverter(authenticationConverter)
 
-        return http.build()
-    }
+    return http.build()
+  }
 
-    @Bean
-    fun corsConfigurationSource(): CorsConfigurationSource {
-        val configuration = CorsConfiguration()
-        configuration.allowedOrigins = listOf("http://localhost:4200")
-        configuration.allowedMethods = listOf("OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE")
-        configuration.allowedHeaders = listOf("Content-Type", "Authorization")
-        configuration.allowCredentials = true
+  @Bean
+  fun corsConfigurationSource(): CorsConfigurationSource {
+    val configuration = CorsConfiguration()
+    configuration.allowedOrigins = listOf("http://localhost:4200")
+    configuration.allowedMethods = listOf("OPTIONS", "GET", "POST", "PUT", "PATCH", "DELETE")
+    configuration.allowedHeaders = listOf("Content-Type", "Authorization")
+    configuration.allowCredentials = true
 
-        val source = UrlBasedCorsConfigurationSource()
-        source.registerCorsConfiguration("/**", configuration)
+    val source = UrlBasedCorsConfigurationSource()
+    source.registerCorsConfiguration("/**", configuration)
 
-        return source
-    }
+    return source
+  }
 
-    @Bean
-    fun opaqueTokenAuthenticationProvider() =
-        OpaqueTokenAuthenticationProvider(
-            opaqueTokenIntrospector
-        )
+  @Bean
+  fun opaqueTokenAuthenticationProvider() =
+    OpaqueTokenAuthenticationProvider(
+      opaqueTokenIntrospector
+    )
 }
