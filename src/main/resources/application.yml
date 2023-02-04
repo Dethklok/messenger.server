@@ -2,6 +2,9 @@ server:
   port: 8082
 
 spring:
+  application:
+    name: pegasus-messenger
+
   datasource:
     url: jdbc:postgresql://localhost:5432/pegasus-messenger
     username: pegasus
@@ -29,6 +32,19 @@ spring:
           introspection-uri: http://localhost:8081/auth/realms/pegasus/protocol/openid-connect/token/introspect
           client-id: pegasus-messenger-server
           client-secret: oTRYUVig2SdBqhuvEbci6T8aBNmKx7Oh
+
+  cloud.stream:
+    function:
+      definition: userProfileProcessor
+    bindings:
+      userProfileProcessor-in-0:
+        destination: UPDATE_PROFILE
+    kafka:
+      streams:
+        binder:
+          brokers:
+            - localhost:29092
+
 
 logging:
   level:

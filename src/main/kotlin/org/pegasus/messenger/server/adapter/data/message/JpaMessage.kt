@@ -7,7 +7,7 @@ import org.pegasus.messenger.server.adapter.data.common.AbstractJpaEntity
 import org.pegasus.messenger.server.adapter.data.user.JpaUser
 
 @Entity
-@Table(name = "message")
+@Table(name = "message", schema = "public")
 class JpaMessage(
   @field:[
   Column(name = "content", nullable = false)

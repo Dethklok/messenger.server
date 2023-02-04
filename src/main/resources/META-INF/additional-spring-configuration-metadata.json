@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "web.allowed-origin",
+      "type": "java.lang.String",
+      "description": "Description for web.allowed-origin."
+    }
+  ]
+}

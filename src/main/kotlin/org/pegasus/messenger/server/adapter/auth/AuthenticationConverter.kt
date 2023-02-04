@@ -1,7 +1,8 @@
 package org.pegasus.messenger.server.adapter.auth
 
 import org.pegasus.messenger.server.application.port.GetUserOrCreateIfNotFoundInputPort
-import org.pegasus.messenger.server.application.port.SaveUserRequest
+import org.pegasus.messenger.server.application.port.UserPort
+import org.pegasus.messenger.server.domain.entity.User
 import org.slf4j.LoggerFactory
 import org.springframework.security.core.Authentication
 import org.springframework.security.oauth2.core.OAuth2AccessToken
@@ -32,15 +33,15 @@ class AuthenticationConverter(
     )
   }
 
-  private fun extractUserDetails(principal: OAuth2AuthenticatedPrincipal): SaveUserRequest {
+  private fun extractUserDetails(principal: OAuth2AuthenticatedPrincipal): UserPort {
     try {
-      return object : SaveUserRequest {
-        override val id = principal.attributes["sub"] as String
-        override val username = principal.attributes["username"] as String
-        override val email = principal.attributes["email"] as String
-        override val firstName = principal.attributes["given_name"] as String?
-        override val lastName = principal.attributes["family_name"] as String?
-      }
+      return User(
+        principal.attributes["sub"] as String,
+        principal.attributes["username"] as String,
+        principal.attributes["email"] as String,
+        principal.attributes["given_name"] as String?,
+        principal.attributes["family_name"] as String?,
+      )
     } catch (e: ClassCastException) {
       throw OAuth2IntrospectionException(e.message)
     }

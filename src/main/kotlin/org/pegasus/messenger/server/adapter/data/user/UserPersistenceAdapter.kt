@@ -2,7 +2,6 @@ package org.pegasus.messenger.server.adapter.data.user
 
 import org.pegasus.messenger.server.application.port.FindUserByIdOutputPort
 import org.pegasus.messenger.server.application.port.SaveUserOutputPort
-import org.pegasus.messenger.server.application.port.SaveUserRequest
 import org.pegasus.messenger.server.application.port.UserPort
 import org.springframework.stereotype.Component
 
@@ -14,8 +13,16 @@ class UserPersistenceAdapter(
     return userRepository.findOneById(id)
   }
 
-  override fun save(user: SaveUserRequest): UserPort {
+  override fun save(user: UserPort): UserPort {
     val jpaUser = JpaUser(user.id, user.username, user.email, user.firstName, user.lastName)
-    return userRepository.save(jpaUser)
+    val savedUser = userRepository.save(jpaUser)
+
+    return object : UserPort {
+      override val id = savedUser.id
+      override val username = savedUser.username
+      override val email = savedUser.email
+      override val firstName = savedUser.firstName
+      override val lastName = savedUser.lastName
+    }
   }
 }
