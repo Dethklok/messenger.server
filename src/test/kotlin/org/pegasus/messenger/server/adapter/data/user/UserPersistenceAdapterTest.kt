@@ -3,7 +3,9 @@ package org.pegasus.messenger.server.adapter.data.user
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.pegasus.messenger.server.domain.entity.User
+import org.pegasus.messenger.server.userProfile.User
+import org.pegasus.messenger.server.userProfile.UserPersistenceAdapter
+import org.pegasus.messenger.server.userProfile.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 
