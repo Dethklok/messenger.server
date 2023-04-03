@@ -1,6 +1,6 @@
 package org.pegasus.messenger.server.configuration
 
-import org.pegasus.messenger.server.security.AuthenticationConverter
+import org.pegasus.messenger.server.userProfile.adapter.AuthenticationConverter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity

@@ -1,6 +1,6 @@
 package org.pegasus.messenger.server.configuration
 
-import org.pegasus.messenger.server.security.AuthenticationConverter
+import org.pegasus.messenger.server.userProfile.adapter.AuthenticationConverter
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Configuration
