@@ -1,5 +1,6 @@
 package org.pegasus.messenger.server.messaging.adapter
 
+import org.pegasus.messenger.server.shared.adapter.jpa.JpaMessage
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.repository.JpaRepository

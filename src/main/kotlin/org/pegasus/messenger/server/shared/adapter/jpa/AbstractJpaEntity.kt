@@ -1,4 +1,4 @@
-package org.pegasus.messenger.server.shared.adapter
+package org.pegasus.messenger.server.shared.adapter.jpa
 
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*

@@ -13,7 +13,7 @@ class UserProfileMQProcessor(
   private val updateUserInputPort: UpdateUserInputPort
 ) {
 
-  private val logger = LoggerFactory.getLogger(this::class.java)
+  private val logger = LoggerFactory.getLogger(javaClass)
 
   @Bean
   fun userProfileProcessor(): Consumer<KStream<String, ProfileUpdatedEventPayload>> = Consumer { kStream ->

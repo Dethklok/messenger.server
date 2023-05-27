@@ -32,7 +32,7 @@ class WebSocketConfiguration(
   @field:Value("\${web.allowed-origin}")
   private lateinit var allowedOrigin: String
 
-  private val logger = LoggerFactory.getLogger(this::class.java)
+  private val logger = LoggerFactory.getLogger(javaClass)
 
   override fun configureMessageBroker(registry: MessageBrokerRegistry) {
     registry.enableSimpleBroker("/topic")

@@ -1,5 +1,6 @@
 package org.pegasus.messenger.server.userProfile.adapter
 
+import org.pegasus.messenger.server.shared.adapter.jpa.JpaUser
 import org.pegasus.messenger.server.userProfile.domain.UserPort
 import org.pegasus.messenger.server.userProfile.port.FindUserByIdOutputPort
 import org.pegasus.messenger.server.userProfile.port.SaveUserOutputPort

@@ -1,6 +1,7 @@
 package org.pegasus.messenger.server.messaging.adapter
 
 import jakarta.validation.constraints.NotEmpty
+import jakarta.validation.constraints.NotNull
 import org.pegasus.messenger.server.messaging.port.SaveMessageDto
 import org.pegasus.messenger.server.messaging.domain.MessagePort
 import org.pegasus.messenger.server.messaging.port.SaveMessageInputPort
@@ -21,9 +22,10 @@ class MessageController(
     return saveMessageInputPort.execute(object :
       SaveMessageDto {
       override val content = saveMessageRequest.content
+      override val channelId = saveMessageRequest.channelId
       override val userId = principal.user.id
     })
   }
 
-  class SaveMessageRequest(@field:NotEmpty val content: String)
+  class SaveMessageRequest(@field:NotEmpty val content: String, @field:NotNull val channelId: Long)
 }

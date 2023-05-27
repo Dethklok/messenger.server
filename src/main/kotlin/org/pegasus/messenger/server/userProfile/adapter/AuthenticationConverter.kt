@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component
 class AuthenticationConverter(
   private val getUserOrCreateIfNotFoundInputPort: GetUserOrCreateIfNotFoundInputPort
 ) : OpaqueTokenAuthenticationConverter {
-  private val logger = LoggerFactory.getLogger(this::class.java)
+  private val logger = LoggerFactory.getLogger(javaClass)
   override fun convert(
     introspectedToken: String, authenticatedPrincipal: OAuth2AuthenticatedPrincipal
   ): Authentication {
