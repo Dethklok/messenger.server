@@ -4,7 +4,7 @@ import jakarta.persistence.*
 import jakarta.validation.constraints.NotEmpty
 import jakarta.validation.constraints.NotNull
 
-@Entity
+@Entity(name = "message")
 @Table(name = "message", schema = "public")
 class JpaMessage(
   @field:[

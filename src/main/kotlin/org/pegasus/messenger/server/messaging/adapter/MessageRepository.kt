@@ -12,7 +12,8 @@ import java.time.LocalDateTime
 @RepositoryRestResource(
   path = "messages",
   collectionResourceRel = "messages",
-  excerptProjection = DefaultMessageProjection::class
+  excerptProjection = DefaultMessageProjection::class,
+  itemResourceRel = "message"
 )
 interface MessageRepository : JpaRepository<JpaMessage, Long> {
   @RestResource(path = "createdAtLessThan", rel = "createdAtLessThan")
