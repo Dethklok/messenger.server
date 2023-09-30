@@ -13,8 +13,7 @@
     </component>
     <component name="PersistenceUnitSettings">
         <persistence-units>
-            <persistence-unit name="Default"
-                              defaultIncludeChangeLogFile="src/main/resources/db/changelog/db.changelog-master.xml">
+            <persistence-unit name="Default">
                 <packages>
                     <package value="org.pegasus.messenger.server"/>
                 </packages>
